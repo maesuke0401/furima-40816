@@ -58,8 +58,8 @@
 |post_code     | string | null: false |
 |source_id     | integer | null: false |
 |city          | string | null: false |
-|building_name | string | null: false |
-|house_number  | string |             |
+|building_name | string |             |
+|house_number  | string | null: false |
 |phone         | string | null: false |
 |record        | references| null: false, foreign_key:true |
 
