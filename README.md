@@ -1,24 +1,68 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+|nick_name           | string | null: false |
+|email               | string | null: false, unique: true |
+|encrypted_password  | string | null: false |
+|birthday            |  date  | null: false |
+|last_name           | string | null: false |
+|first_name          | string | null: false |
+|next_last_name      | string | null: false |
+|next_first_name     | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :articles
+- has_many :records
 
-* Configuration
+## articles テーブル
 
-* Database creation
+| Column       | Type   | Options     |
+| ------------ | ------ | ----------- |
+|product       | string | null: false |
+|category_id   | integer | null: false |
+|condition_id  | integer | null: false |
+|delivery_fee_id| integer | null: false |
+|source_id     | integer | null: false |
+|price         | integer | null: false |
+|shipping_id   | string | null: false |
+|description   |  text  | null: false |
+|     user     | references | null: false, foreign_key:true |
 
-* Database initialization
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_one :record
 
-* Deployment instructions
+## records テーブル
 
-* ...
+| Column     | Type       | Options                       |
+| ---------- | ------     | -----------                   |
+|user        | references | null: false, foreign_key:true |
+|article     | references | null: false, foreign_key:true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :article
+- has_one :address
+
+## addresses
+
+| Column       | Type   | Options     |
+| ------------ | ------ | ----------- |
+|post_code     | string | null: false |
+|source_id     | integer | null: false |
+|city          | string | null: false |
+|building_name | string |             |
+|house_number  | string | null: false |
+|phone         | string | null: false |
+|record        | references| null: false, foreign_key:true |
+
+### Association
+
+- belongs_to :record
