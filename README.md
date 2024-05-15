@@ -4,10 +4,14 @@
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-|name                | string | null: false |
+|nick_name           | string | null: false |
 |email               | string | null: false, unique: true |
 |encrypted_password  | string | null: false |
-|birthday            | string | null: false |
+|birthday            |  date  | null: false |
+|last_name           | string | null: false |
+|first_name          | string | null: false |
+|next_last_name      | string | null: false |
+|next_first_name     | string | null: false |
 
 ### Association
 
@@ -20,13 +24,13 @@
 | ------------ | ------ | ----------- |
 |product       | string | null: false |
 |category      | string | null: false |
-|condition     | string | null: false |
-|delivery_fee  | string | null: false |
-|source        | string | null: false |
-|price         | string | null: false |
-|shipping      | string | null: false |
+|condition_id  | string | null: false |
+|delivery_fee_id| string | null: false |
+|source_id     | string | null: false |
+|price         | integer | null: false |
+|shipping_id   | string | null: false |
 |description   |  text  | null: false |
-|seller_user   | references | null: false, foreign_key:true |
+|     user     | references | null: false, foreign_key:true |
 
 
 ### Association
@@ -38,7 +42,7 @@
 
 | Column     | Type       | Options                       |
 | ---------- | ------     | -----------                   |
-|buyer_user  | references | null: false, foreign_key:true |
+|user        | references | null: false, foreign_key:true |
 |article     | references | null: false, foreign_key:true |
 
 ### Association
@@ -54,10 +58,11 @@
 |post_code     | string | null: false |
 |prefecture    | string | null: false |
 |city          | string | null: false |
+|building_name | string | null: false |
 |house_number  | string | null: false |
-|phone         | string | null: false, foreign_key:true |
+|phone         | string | null: false |
 
 ### Association
 
-- belongs_to :user
+- belongs_to :article
 - belongs_to :record

@@ -17,20 +17,17 @@
                 <mxCell id="73" style="edgeStyle=none;html=1;entryX=0.121;entryY=-0.013;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="43" target="46">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="43" value="usesテーブル&lt;br&gt;name(string型,NOT NULL,)&lt;br&gt;email(string型,NOT NULL,ユニーク制約)&lt;br&gt;encrypted_password(string型,NOT NULL,)&lt;br&gt;birthday(string型,NOT NULL,)" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="40" y="50" width="270" height="110" as="geometry"/>
+                <mxCell id="43" value="usesテーブル&lt;br&gt;&lt;font face=&quot;Consolas, Courier New, monospace&quot; color=&quot;#cccccc&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(31, 31, 31);&quot;&gt;nick_name&lt;/span&gt;&lt;/font&gt;(string型,NOT NULL,)&lt;br&gt;email(string型,NOT NULL,ユニーク制約)&lt;br&gt;encrypted_password(string型,NOT NULL,)&lt;br&gt;birthday(date型,NOT NULL,)&lt;br&gt;last_name(string型,NOT NULL,)&lt;br&gt;first_name(string型,NOT NULL,)&lt;br&gt;next_last_name(string型,NOT NULL,)&lt;br&gt;next_first_name(string型,NOT NULL,)" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="40" width="270" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="68" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="45" target="45">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="45" value="articlesテーブル&lt;br&gt;product(string型,NOT NULL,)&lt;br&gt;descriptioncategory(text型,NOT NULL,)&lt;br&gt;category(string型,NOT NULL,)&lt;br&gt;condition(string型,NOT NULL,)&lt;br&gt;delivery_fee(string型,NOT NULL,)&lt;br&gt;source(string型,NOT NULL,)&lt;br&gt;price(string型,NOT NULL,)&lt;br&gt;shipping(string型,NOT NULL,)&lt;br&gt;seller_user(references型,NOT NULL,外部キー)" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="45" value="articlesテーブル&lt;br&gt;product(string型,NOT NULL,)&lt;br&gt;descriptioncategory(text型,NOT NULL,)&lt;br&gt;category(string型,NOT NULL,)&lt;br&gt;condition(string型,NOT NULL,)&lt;br&gt;delivery_fee(string型,NOT NULL,)&lt;br&gt;source(string型,NOT NULL,)&lt;br&gt;price(integer型,NOT NULL,)&lt;br&gt;shipping(string型,NOT NULL,)&lt;br&gt;seller_user(references型,NOT NULL,外部キー)" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="430" y="40" width="270" height="160" as="geometry"/>
                 </mxCell>
                 <mxCell id="46" value="recordsテーブル&lt;br&gt;buyer_user(references型,NOT NULL,外部キー)&lt;br&gt;article(references型,NOT NULL,外部キー)" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="430" y="250" width="270" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="47" value="addressesテーブル&lt;br&gt;post_code(string型,NOT NULL,)&lt;br&gt;prefecture(string型,NOT NULL,)&lt;br&gt;city(string型,NOT NULL,)&lt;br&gt;house_number(string型,NOT NULL,)&lt;br&gt;phone(string型,NOT NULL,ユニーク制約)" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="40" y="240" width="270" height="100" as="geometry"/>
+                <mxCell id="47" value="addressesテーブル&lt;br&gt;post_code(string型,NOT NULL,)&lt;br&gt;prefecture(string型,NOT NULL,)&lt;br&gt;city(string型,NOT NULL,)&lt;br&gt;house_number(string型,NOT NULL,)&lt;br&gt;phone(string型,NOT NULL,)&lt;br&gt;&lt;span style=&quot;background-color: initial; text-align: left;&quot;&gt;building_name(string型,NOT NULL,)&lt;/span&gt;" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="240" width="270" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="67" value="" style="endArrow=ERone;html=1;exitX=1.007;exitY=0.58;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="47" target="46">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
