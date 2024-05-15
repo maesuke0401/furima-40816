@@ -23,10 +23,10 @@
 | Column       | Type   | Options     |
 | ------------ | ------ | ----------- |
 |product       | string | null: false |
-|category      | string | null: false |
-|condition_id  | string | null: false |
-|delivery_fee_id| string | null: false |
-|source_id     | string | null: false |
+|category_id   | integer | null: false |
+|condition_id  | integer | null: false |
+|delivery_fee_id| integer | null: false |
+|source_id     | integer | null: false |
 |price         | integer | null: false |
 |shipping_id   | string | null: false |
 |description   |  text  | null: false |
@@ -56,13 +56,13 @@
 | Column       | Type   | Options     |
 | ------------ | ------ | ----------- |
 |post_code     | string | null: false |
-|prefecture    | string | null: false |
+|source_id     | integer | null: false |
 |city          | string | null: false |
 |building_name | string | null: false |
-|house_number  | string | null: false |
+|house_number  | string |             |
 |phone         | string | null: false |
+|record        | references| null: false, foreign_key:true |
 
 ### Association
 
-- belongs_to :article
 - belongs_to :record
