@@ -1,24 +1,63 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+|name                | string | null: false |
+|email               | string | null: false, unique: true |
+|encrypted_password  | string | null: false |
+|birthday            | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :articles
+- has_many :records
 
-* Configuration
+## articles テーブル
 
-* Database creation
+| Column       | Type   | Options     |
+| ------------ | ------ | ----------- |
+|product       | string | null: false |
+|category      | string | null: false |
+|condition     | string | null: false |
+|delivery_fee  | string | null: false |
+|source        | string | null: false |
+|price         | string | null: false |
+|shipping      | string | null: false |
+|description   |  text  | null: false |
+|seller_user   | references | null: false, foreign_key:true |
 
-* Database initialization
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_one :record
 
-* Deployment instructions
+## records テーブル
 
-* ...
+| Column     | Type       | Options                       |
+| ---------- | ------     | -----------                   |
+|buyer_user  | references | null: false, foreign_key:true |
+|article     | references | null: false, foreign_key:true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :article
+- has_one :address
+
+## addresses
+
+| Column       | Type   | Options     |
+| ------------ | ------ | ----------- |
+|post_code     | string | null: false |
+|prefecture    | string | null: false |
+|city          | string | null: false |
+|house_number  | string | null: false |
+|phone         | string | null: false, foreign_key:true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :record
