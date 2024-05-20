@@ -15,10 +15,10 @@
 
 ### Association
 
-- has_many :articles
+- has_many :items
 - has_many :records
 
-## articles テーブル
+## items テーブル
 
 | Column       | Type   | Options     |
 | ------------ | ------ | ----------- |
@@ -48,7 +48,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :article
+- belongs_to :item
 - has_one :address
 
 ## addresses
@@ -65,4 +65,4 @@
 
 ### Association
 
-- belongs_to :record
+- belongs_to :records
