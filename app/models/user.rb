@@ -20,6 +20,6 @@ class User < ApplicationRecord
          validates :next_first_name, presence: true
          end
  
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: "は半角英数字混合で入力してください" }
+         validates :password, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: "は半角英語と数字の両方を含む必要があります" }
 
 end
