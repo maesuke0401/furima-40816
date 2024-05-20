@@ -83,8 +83,8 @@ RSpec.describe User, type: :model do
     expect(@user.errors.full_messages).to include "Birthday can't be blank"
   end
   it 'パスワードが半角英数字混合でなければ登録できない' do
-    @user.password = 'あああア亜1１pd'
-    @user.password_confirmation = 'あああア亜1１pd'
+    @user.password = 'aaaaaa'
+    @user.password_confirmation = 'aaaaaa'
     @user.valid?
     expect(@user.errors.full_messages).to include("Password は半角英語と数字の両方を含む必要があります")
   end
@@ -108,6 +108,24 @@ RSpec.describe User, type: :model do
         @user.first_name = '123'
         @user.valid?
         expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
+  end
+  it '半角英字のみでは登録できない' do
+    @user.password = 'aaaaaa'
+    @user.password_confirmation = 'aaaaaa'
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Password は半角英語と数字の両方を含む必要があります")
+  end
+  it '半角数字のみでは登録できない' do
+    @user.password = '111111'
+    @user.password_confirmation = '111111'
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Password は半角英語と数字の両方を含む必要があります")
+  end
+  it '全角文字を含むパスワードでは登録できない' do
+    @user.password = 'ああああああ'
+    @user.password_confirmation = 'ああああああ'
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Password は半角英語と数字の両方を含む必要があります")
   end
 end
 end
