@@ -8,10 +8,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          validates :nickname, presence: true
-         attribute :birthday, :date
-         attribute :last_name, :string
-         attribute :first_name, :string
-         attribute :next_last_name, :string
-         attribute :next_first_name, :string
+         validates :birthday, presence: true
+         validates :last_name, presence: true
+         validates :first_name, presence: true
+         validates :next_last_name, presence: true
+         validates :next_first_name, presence: true
 
 end

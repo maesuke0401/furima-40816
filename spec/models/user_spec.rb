@@ -51,5 +51,30 @@ RSpec.describe User, type: :model do
   @user.valid?
   expect(@user.errors.full_messages).to include("Password is too long (maximum is 128 characters)")
   end
+  it '苗字が空では登録できない' do
+    @user.last_name = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Last name can't be blank"
+  end
+  it '名前が空では登録できない' do
+    @user.first_name = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include "First name can't be blank"
+  end
+  it 'カタカナの苗字が空では登録できない' do
+    @user.next_last_name = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Next last name can't be blank"
+  end
+  it 'カタカナの名前が空では登録できない' do
+    @user.next_first_name = ''
+    @user.valid?
+    expect(@user.errors.full_messages).to include "Next first name can't be blank"
+  end
+  it '生年月日が空では登録できない' do
+    @user.birthday = ''
+    @user.valid?
+    expect(@user.errors.full_messages).to include "Birthday can't be blank"
+  end
 end
 end
