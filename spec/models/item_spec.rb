@@ -6,6 +6,12 @@ RSpec.describe Item, type: :model do
   end
 
   describe '商品出品機能' do
+    context '出品登録ができるとき' do
+      it '全ての入力事項が、存在すれば登録できる' do
+        expect(@item).to be_valid
+      end
+    end
+
     context '商品が出品できないとき' do
     it '商品画像が空では登録できない' do
       @item.image  = nil
@@ -23,27 +29,27 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include "Description can't be blank"
     end
     it 'カテゴリーが空では出品できない' do
-      @item.category_id = ''
+      @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include "Category can't be blank"
     end
     it '商品の状態が空では出品できない' do
-      @item.condition_id = ''
+      @item.condition_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include "Condition can't be blank"
     end
     it '配送料の負担が空では出品できない' do
-      @item.delivery_fee_id = ''
+      @item.delivery_fee_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include "Delivery fee can't be blank"
     end
     it '配送元が空では出品できない' do
-      @item.source_id = ''
+      @item.source_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include "Source can't be blank"
     end
     it '発送までの日数が空では出品できない' do
-      @item.shipping_id = ''
+      @item.shipping_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include "Shipping can't be blank"
     end
@@ -62,6 +68,18 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include "Price must be less than or equal to 9999999"
     end
+    it '商品の価格が半角数字以外では保存できないこと' do
+      @item.price_id = '１０００００'
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Price is not a number"
+    end
+    it 'ユーザーが紐づいていないと保存できないこと' do
+      @item.user = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include "User must exist"
+    end
+
+
   
 end
 end
