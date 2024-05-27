@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
  end
  def new
   @item = Item.new
-  @condition = Condition.new
 
 end
 
