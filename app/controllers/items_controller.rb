@@ -21,8 +21,15 @@ def create
 end
 
 def edit
-  #@item = Item.find(params[:id])
+  @item = Item.find(params[:id])
 end
+
+def update
+  @item = Item.find(params[:id])
+  @item.update(items_params)
+  redirect_to item_path
+end
+
 private
 
   def items_params
