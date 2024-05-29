@@ -26,8 +26,11 @@ end
 
 def update
   @item = Item.find(params[:id])
-  @item.update(items_params)
+  if @item.update(items_params)
   redirect_to item_path
+  else
+    render :edit, status: :unprocessable_entity
+  end
 end
 
 private
