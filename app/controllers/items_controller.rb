@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :kosuke, only: [:show, :edit, :update]
+  before_action :kosuke, only: [:show, :edit, :update, :destroy]
+  before_action :maesuke, only: [:destroy, :edit]
   def index
     @items = Item.all.order(created_at: :desc)
  end
@@ -22,10 +23,6 @@ def create
 end
 
 def edit
-
-  if user_signed_in? && current_user.id != @item.user_id
-    redirect_to root_path
-  end
 end
 
 def update
@@ -37,6 +34,11 @@ def update
   end
 end
 
+def destroy 
+   @item.destroy
+   redirect_to root_path
+end
+
 private
 
   def items_params
@@ -45,6 +47,12 @@ private
 
   def kosuke
     @item = Item.find(params[:id])
+  end
+
+  def maesuke
+    if user_signed_in? && current_user.id != @item.user_id
+      redirect_to action: :index
+    end
   end
 
 end
