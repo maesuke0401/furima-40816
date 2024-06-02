@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :non_purchased_item, only: [:index, :create]
+  before_action :yes, only: [:index, :create]
+  
   def index
-    @item = Item.find(params[:item_id])
     if user_signed_in? && current_user.id != @item.user_id
       @item_order = ItemOrder.new
       gon.public_key = ENV['PAYJP_PUBLIC_KEY'] # gon.public_key を設定
@@ -12,7 +13,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @item_order = ItemOrder.new(order_params)
     if @item_order.valid?
       
@@ -42,6 +42,9 @@ class OrdersController < ApplicationController
   def non_purchased_item
     @item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
+  end
+  def yes
+    @item = Item.find(params[:item_id])
   end
 
 end
