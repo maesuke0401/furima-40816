@@ -10,7 +10,7 @@ class ItemOrder
     validates :source_id, numericality: { other_than: 0, message: "can't be blank" }
     validates :city
     validates :phone, format: { with: /\A[0-9]{11}\z/, message: 'is invalid' }
-    
+    validates :house_number
     validates :token
   end
 
